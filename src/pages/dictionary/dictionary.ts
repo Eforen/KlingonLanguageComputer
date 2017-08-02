@@ -1,19 +1,28 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Http } from '@angular/http';
+import { WordDetailsPage } from '../word-details/word-details';
 
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html'
+  selector: 'page-dictionary',
+  templateUrl: 'dictionary.html'
 })
-export class ListPage {
+export class DictionaryPage {
   selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  dictionary: any;
+  loading: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+    //this.selectedItem = navParams.get('item');
 
+    this.loading = true;
+    http.get('/assets/data/dictionary.json').success(function(response){
+      this.dictionary = response.json();
+    });
+
+
+    /*
     // Let's populate this page with some filler content for funzies
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
@@ -26,12 +35,13 @@ export class ListPage {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+    */
   }
 
-  itemTapped(event, item) {
+  itemTapped(event, word) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
+    this.navCtrl.push(WordDetailsPage, {
+      word: word
     });
   }
 }

@@ -1,3 +1,52 @@
 page-home {
+	ion-content{
+		color: #FFF !important;
+	    background-image: url("/assets/images/HomeSplash.jpg");
+	    background-size: cover;
+    	background-position: center;
 
+    	h1 {
+    		font-size: xx-large;
+    	}
+
+    	h3 {
+		    font-size: small;
+		}
+
+    	.word-of-the-day{
+    		color: #000;
+    		padding: 10px;
+    		border-radius: 1em;
+    		background-color:rgba(255, 255, 255, 0.64);
+    		margin-bottom: 1em;
+    		.content{
+    			.word{
+    				opacity: 0.75;
+    				font-size: x-large;
+    			}
+    			.type, .examplesLabel{
+    				opacity: 0.5;
+    			}
+    			.definition, .examples{
+    				opacity: 0.65;
+    				font-weight: bold;
+    			}
+    		}
+    	}
+
+    	.help{
+    		span{
+    		    font-size: 0.9em !important;
+    			font-weight: lighter;
+    		}
+    		margin-bottom: 1em;
+    	}
+
+    	.credits{
+    		span{
+    		    font-size: 0.9em !important;
+    			font-weight: lighter;
+    		}
+    	}
+	}
 }
