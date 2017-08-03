@@ -9,6 +9,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DictionaryPage } from '../pages/dictionary/dictionary';
 import { WordDetailsPage } from '../pages/word-details/word-details';
+import { PrefixSelectorPage } from '../pages/prefix-selector/prefix-selector';
+import { PopoverObjectPage } from '../pages/prefix-selector/prefix-selector-object';
+import { PopoverSubjectPage} from '../pages/prefix-selector/prefix-selector-subject';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +21,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     DictionaryPage,
-    WordDetailsPage
+    WordDetailsPage,
+    PrefixSelectorPage,
+    PopoverSubjectPage,
+    PopoverObjectPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     DictionaryPage,
-    WordDetailsPage
+    WordDetailsPage,
+    PrefixSelectorPage,
+    PopoverSubjectPage,
+    PopoverObjectPage
   ],
   providers: [
     DictionaryService,

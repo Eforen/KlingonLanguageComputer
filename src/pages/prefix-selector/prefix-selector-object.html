@@ -1,0 +1,30 @@
+<ion-list radio-group [(ngModel)]="object" (ionChange)="changeObject()" class="popover-object-page">
+  <ion-item class="text-none">
+    <ion-label>None</ion-label>
+    <ion-radio value="none"></ion-radio>
+  </ion-item>
+  <ion-item class="text-me">
+    <ion-label>Me</ion-label>
+    <ion-radio value="me"></ion-radio>
+  </ion-item>
+  <ion-item class="text-you">
+    <ion-label>You</ion-label>
+    <ion-radio value="you"></ion-radio>
+  </ion-item>
+  <ion-item class="text-he">
+    <ion-label>He/She/It</ion-label>
+    <ion-radio value="he"></ion-radio>
+  </ion-item>
+  <ion-item class="text-us">
+    <ion-label>Us</ion-label>
+    <ion-radio value="us"></ion-radio>
+  </ion-item>
+  <ion-item class="text-yous">
+    <ion-label>You (plural)</ion-label>
+    <ion-radio value="yous"></ion-radio>
+  </ion-item>
+  <ion-item class="them">
+    <ion-label>Them</ion-label>
+    <ion-radio value="them"></ion-radio>
+  </ion-item>
+</ion-list>
