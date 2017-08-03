@@ -4,16 +4,26 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Dictionary</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="toggleSearchBar()" end>
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+  <ion-toolbar>
+    <button class="LangBtnKlingon"  *ngIf="!englishMode" ion-button start>tlhingon Hol</button> <button class="LangBtnEnglish" *ngIf="!englishMode" ion-button outline end (click)="goToEnglish()">English</button>
+    <button class="LangBtnKlingon" *ngIf="englishMode" ion-button outline start (click)="goToKlingon()">tlhingon Hol</button> <button class="LangBtnEnglish" *ngIf="englishMode" ion-button end>English</button>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-searchbar [hidden]="searchHidden" (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let word of dictionary.words">
+    <ion-item-sliding *ngFor="let word of filterDictionary">
       <ion-item (click)="itemTapped($event, word)">
-        {{word.word}}
+        {{englishMode ? word.shortDef : word.word}}
         <div class="word-note">
-          {{word.shortDef}}
+          {{englishMode ? word.word : word.shortDef}}
         </div>
         <ion-icon name="arrow-forward" item-right light></ion-icon>
       </ion-item>
@@ -27,7 +37,25 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  <!--s
+  <ion-list *ngIf="searchHidden == false">
+    <ion-item-sliding *ngFor="let word of filterDictionary">
+      <ion-item (click)="itemTapped($event, word.item)">
+        {{word.item.word}}
+        <div class="word-note">
+          {{word.item.shortDef}}
+        </div>
+        <ion-icon name="arrow-forward" item-right light></ion-icon>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button icon-only (click)="editNote(word.item)" light>
+          <ion-icon name="paper"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="addToList(word.item)" danger>
+          <ion-icon name="bookmark"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  -->
 </ion-content>
