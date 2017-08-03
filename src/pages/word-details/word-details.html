@@ -8,18 +8,20 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>mu-</h1>
-  <h2>Language Computer</h2>
-  <h3>Disassemble (larghvam)&gt;</h3>
-
-  <div>
-    <h1>Help Info</h1>
-    To Begin searching, simply tap the dictionary button below, tap tlhIngan or English based on the language of the word you want to find, then type the word in the "search" box at the top to filter the Dictionary. 
+  <h1 class="word"> {{selectedWord.word}}</h1>
+  <h1 class="font-pIqaD">{{selectedWord.pIqaD}}</h1>
+  <div class="word-glimps">
+    <h3 class="word-type">{{selectedWord.type}}</h3>
+    <span class="word-def">{{selectedWord.shortDef}}</span>
   </div>
 
-  <div>
-    <h1>Credits</h1>
-    This app was created by Ariel Lothlorien &#123;rel&#125;
-    The Database is maintained by the KLI (Klingon Language Institute)
+  <div class="definition">
+    <h1>Definition</h1>
+    <div *ngFor="let def of selectedWord.def">{{def}}</div>
+  </div>
+
+  <div class="sources" *ngIf="selectedWord.sources">
+    <h1>Source</h1>
+    <span *ngFor="let source of selectedWord.sources">{{source}}</span>
   </div>
 </ion-content>

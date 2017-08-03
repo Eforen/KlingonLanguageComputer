@@ -9,13 +9,23 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      {{item.title}}
-      <div class="word-note">
-        {{item.note}}
-      </div>
-      <ion-icon name="arrow-forward" item-right></ion-icon>
-    </button>
+    <ion-item-sliding *ngFor="let word of dictionary.words">
+      <ion-item (click)="itemTapped($event, word)">
+        {{word.word}}
+        <div class="word-note">
+          {{word.shortDef}}
+        </div>
+        <ion-icon name="arrow-forward" item-right light></ion-icon>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button icon-only (click)="editNote(word)" light>
+          <ion-icon name="paper"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="addToList(word)" danger>
+          <ion-icon name="bookmark"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>

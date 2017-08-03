@@ -3,6 +3,8 @@ import { HttpModule } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
+import { DictionaryService } from '../services/dictionary.service';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DictionaryPage } from '../pages/dictionary/dictionary';
@@ -31,6 +33,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     WordDetailsPage
   ],
   providers: [
+    DictionaryService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

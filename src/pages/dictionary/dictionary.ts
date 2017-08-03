@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Http } from '@angular/http';
 import { WordDetailsPage } from '../word-details/word-details';
+
+import { DictionaryService } from '../../services/dictionary.service';
 
 @Component({
   selector: 'page-dictionary',
@@ -12,14 +13,9 @@ export class DictionaryPage {
   dictionary: any;
   loading: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dictionaryService: DictionaryService) {
     // If we navigated to this page, we will have an item available as a nav param
     //this.selectedItem = navParams.get('item');
-
-    this.loading = true;
-    http.get('/assets/data/dictionary.json').success(function(response){
-      this.dictionary = response.json();
-    });
 
 
     /*
@@ -36,6 +32,10 @@ export class DictionaryPage {
       });
     }
     */
+  }
+
+  ngOnInit() {
+    this.dictionary = this.dictionaryService.getData();
   }
 
   itemTapped(event, word) {

@@ -7,11 +7,11 @@ import { HttpModule } from '@angular/http';
   templateUrl: 'word-details.html'
 })
 export class WordDetailsPage {
-  selectedItem: any;
+  selectedWord: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('word');
+    this.selectedWord = navParams.get('word');
 
   }
 
