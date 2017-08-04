@@ -1,29 +1,29 @@
 <ion-list radio-group [(ngModel)]="object" (ionChange)="changeObject()" class="popover-object-page">
-  <ion-item class="text-none">
+  <ion-item class="text-none" [ngClass]="{'invalid':(parent.isValidObject('none') == false)}">
     <ion-label>None</ion-label>
     <ion-radio value="none"></ion-radio>
   </ion-item>
-  <ion-item class="text-me">
+  <ion-item class="text-me" [ngClass]="{'invalid':(parent.isValidObject('me') == false)}">
     <ion-label>Me</ion-label>
     <ion-radio value="me"></ion-radio>
   </ion-item>
-  <ion-item class="text-you">
+  <ion-item class="text-you" [ngClass]="{'invalid':(parent.isValidObject('you') == false)}">
     <ion-label>You</ion-label>
     <ion-radio value="you"></ion-radio>
   </ion-item>
-  <ion-item class="text-he">
+  <ion-item class="text-he" [ngClass]="{'invalid':(parent.isValidObject('he') == false)}">
     <ion-label>He/She/It</ion-label>
     <ion-radio value="he"></ion-radio>
   </ion-item>
-  <ion-item class="text-us">
+  <ion-item class="text-us" [ngClass]="{'invalid':(parent.isValidObject('us') == false)}">
     <ion-label>Us</ion-label>
     <ion-radio value="us"></ion-radio>
   </ion-item>
-  <ion-item class="text-yous">
+  <ion-item class="text-yous" [ngClass]="{'invalid':(parent.isValidObject('yous') == false)}">
     <ion-label>You (plural)</ion-label>
     <ion-radio value="yous"></ion-radio>
   </ion-item>
-  <ion-item class="them">
+  <ion-item class="text-them" [ngClass]="{'invalid':(parent.isValidObject('them') == false)}">
     <ion-label>Them</ion-label>
     <ion-radio value="them"></ion-radio>
   </ion-item>

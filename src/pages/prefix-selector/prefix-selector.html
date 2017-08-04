@@ -17,5 +17,15 @@
       Subject
     </button>
   </div>
-  <div text-center>{{status}}</div>
+  <div text-center>
+    <button ion-button outline>
+      {{object}}
+    </button>
+    <button ion-button>Verb</button>
+    <button ion-button outline>
+      {{subject}}
+    </button>
+  </div>
+  <div style="margin-top: 2em;" text-center>{{status}}</div>
+  <div style="margin-top: 2em; font-size: 3em;" text-center *ngIf="word!='hidden'">{{word}}</div>
 </ion-content>

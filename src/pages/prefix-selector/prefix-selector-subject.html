@@ -1,25 +1,25 @@
 <ion-list radio-group [(ngModel)]="subject" (ionChange)="changeSubject()" class="popover-subject-page">
-  <ion-item class="text-i">
+  <ion-item class="text-i" [ngClass]="{'invalid':(parent.isValidSubject('i') == false)}">
     <ion-label>I</ion-label>
     <ion-radio value="i"></ion-radio>
   </ion-item>
-  <ion-item class="text-you">
+  <ion-item class="text-you" [ngClass]="{'invalid':(parent.isValidSubject('you') == false)}">
     <ion-label>You</ion-label>
     <ion-radio value="you"></ion-radio>
   </ion-item>
-  <ion-item class="text-he">
+  <ion-item class="text-he" [ngClass]="{'invalid':(parent.isValidSubject('he') == false)}">
     <ion-label>He/She/It</ion-label>
     <ion-radio value="he"></ion-radio>
   </ion-item>
-  <ion-item class="text-we">
+  <ion-item class="text-we" [ngClass]="{'invalid':(parent.isValidSubject('we') == false)}">
     <ion-label>We</ion-label>
     <ion-radio value="we"></ion-radio>
   </ion-item>
-  <ion-item class="text-yous">
+  <ion-item class="text-yous" [ngClass]="{'invalid':(parent.isValidSubject('yous') == false)}">
     <ion-label>You (plural)</ion-label>
     <ion-radio value="yous"></ion-radio>
   </ion-item>
-  <ion-item class="they">
+  <ion-item class="they" [ngClass]="{'invalid':(parent.isValidSubject('they') == false)}">
     <ion-label>They</ion-label>
     <ion-radio value="they"></ion-radio>
   </ion-item>
