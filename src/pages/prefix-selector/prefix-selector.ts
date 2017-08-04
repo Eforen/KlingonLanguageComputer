@@ -4,6 +4,8 @@ import { PopoverController, NavController, NavParams } from 'ionic-angular';
 import { PopoverSubjectPage } from './prefix-selector-subject';
 import { PopoverObjectPage } from './prefix-selector-object';
 
+
+//TODO: Change from full pop ups to Action Sheets
 @Component({
   selector: 'page-prefix-selector',
   templateUrl: 'prefix-selector.html'

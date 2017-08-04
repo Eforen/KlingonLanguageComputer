@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,  ToastController  } from 'ionic-angular';
 import { WordDetailsPage } from '../word-details/word-details';
 
 import { DictionaryService } from '../../services/dictionary.service';
@@ -20,7 +20,12 @@ export class DictionaryPage {
   currentSearch: string;
   englishMode: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dictionaryService: DictionaryService, private sentenceService: SentenceService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private dictionaryService: DictionaryService,
+    private sentenceService: SentenceService,
+    private toast: ToastController) {
     // If we navigated to this page, we will have an item available as a nav param
     //this.selectedItem = navParams.get('item');
 
@@ -104,6 +109,19 @@ export class DictionaryPage {
 
   addToList(word){
     this.sentenceService.addWord(word);
+    let toast = this.toast.create({
+      message: word.word+' added successfully to sentence inventory.',
+      duration: 3000
+    });
+    toast.present();
+  }
+
+  openDictionaryFilterSettingsPage(){
+    let toast = this.toast.create({
+      message: 'Feature not implemented yet...',
+      duration: 3000
+    });
+    toast.present();
   }
 
   runSearchFilter(){

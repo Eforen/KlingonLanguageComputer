@@ -8,11 +8,26 @@
       <button ion-button (click)="toggleSearchBar()" end>
         <ion-icon name="search"></ion-icon>
       </button>
+      <button ion-button (click)="openDictionaryFilterSettingsPage()">
+        <ion-icon name="options"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
   <ion-toolbar>
-    <button class="LangBtnKlingon" style="text-transform: none;" *ngIf="!englishMode" ion-button start>tlhingon Hol</button> <button class="LangBtnEnglish" style="text-transform: none;" *ngIf="!englishMode" ion-button outline end (click)="goToEnglish()">English</button>
-    <button class="LangBtnKlingon" style="text-transform: none;" *ngIf="englishMode" ion-button outline start (click)="goToKlingon()">tlhingon Hol</button> <button class="LangBtnEnglish" style="text-transform: none;" *ngIf="englishMode" ion-button end>English</button>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button class="LangBtnKlingon" style="text-transform: none; width: 100%; margin-right: 1em;" *ngIf="!englishMode" ion-button start>tlhingon Hol</button>
+          <button class="LangBtnKlingon" style="text-transform: none; width: 100%; margin-right: 1em;" *ngIf="englishMode" ion-button outline start (click)="goToKlingon()">tlhingon Hol</button>
+        </ion-col>
+        <ion-col>
+          <button class="LangBtnEnglish" style="text-transform: none; width: 100%; margin-left: 1em;" *ngIf="!englishMode" ion-button outline end (click)="goToEnglish()">English</button>
+          <button class="LangBtnEnglish" style="text-transform: none; width: 100%; margin-left: 1em;" *ngIf="englishMode" ion-button end>English</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <button class="LangBtnKlingon" style="text-transform: none;" *ngIf="!englishMode" ion-button start>tlhingon Hol</button> <button class="LangBtnEnglish" style="text-transform: none;" *ngIf="!englishMode" ion-button outline end (click)="goToEnglish()">English</button>
+    <button class="LangBtnKlingon" style="text-transform: none;" *ngIf="englishMode" ion-button outline start (click)="goToKlingon()">tlhingon Hol</button> <button class="LangBtnEnglish" style="text-transform: none;" *ngIf="englishMode" ion-button end>English</button>-->
   </ion-toolbar>
 </ion-header>
 

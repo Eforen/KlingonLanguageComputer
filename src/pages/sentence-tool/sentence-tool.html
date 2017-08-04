@@ -4,15 +4,37 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Sentence Tool</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="openSentenceMenu()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div text-center>{{currentSentence}}</div>
-  <div *ngIf="words.length != 0" [dragula]='"sentence-bag"' [dragulaModel]='words' class="sentence">
-    <div *ngFor='let word of words' style="text-transform: none;" class="sentence-word">
-      {{word.word}}
-    </div>
+  <ion-card>
+    <ion-card-content text-center>
+      {{words.length == 0 ? 'No sentence add some words.': currentSentence}}
+    </ion-card-content>
+
+  </ion-card>
+  <div text-center></div>
+
+  <ion-card>
+
+    <ion-card-header>
+      Sentence Construction
+    </ion-card-header>
+
+    <ion-card-content text-center *ngIf="words.length != 0" [dragula]='"sentence-bag"' [dragulaModel]='words' class="sentence">
+      <div *ngFor='let word of words' style="text-transform: none;" class="sentence-word">
+        {{word.word}}
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+  <div >
   </div>
-  <div *ngIf="words.length == 0">No sentence add some words.</div>
 </ion-content>
