@@ -2,7 +2,7 @@
 import { Http } from '@angular/http';
 
 export class DictionaryService{
-	private dictionaryData: any;
+  private dictionaryData: any;
   private loading : boolean;
 
 
@@ -213,11 +213,135 @@ export class DictionaryService{
     */
   }
 
-	getData(){
+  // WARNING: This only works with properly formed tlhIngon words. It makes a lot of assumptions
+  getpIqaD(word : string){
+    let r = "";
+
+    for(let c = 0; c < word.length; c++){
+      switch(word[c]){
+        case "a":
+          r += "";
+          break;
+        case "b":
+          r += "";
+          break;
+        case "c":
+          r += "";
+          break;
+        case "D":
+        case "d":
+          r += "";
+          break;
+        case "e":
+          r += "";
+          break;
+        case "g":
+          r += "";
+          break;
+        case "H":
+          r += "";
+          break;
+        case "I":
+          r += "";
+          break;
+        case "j":
+          r += "";
+          break;
+        case "l":
+          r += "";
+          break;
+        case "m":
+          r += "";
+          break;
+        case "n":
+          if(word[c+1] != "g")
+            r += "";
+          else
+            r += "";
+          break;
+        case "o":
+          r += "";
+          break;
+        case "p":
+          r += "";
+          break;
+        case "q":
+          r += "";
+          break;
+        case "Q":
+          r += "";
+          break;
+        case "r":
+          r += "";
+          break;
+        case "S":
+          r += "";
+          break;
+        case "t":
+          if(word[c+1] != "l" || word[c+2] != "h")
+            r += ""; // t
+          else
+            r += ""; //tlh
+          break;
+        case "u":
+          r += "";
+          break;
+        case "v":
+          r += "";
+          break;
+        case "w":
+          r += "";
+          break;
+        case "y":
+          r += "";
+          break;
+        case "'":
+          r += "";
+          break;
+        case "-":
+        case "0":
+          r += "";
+          break;
+        case "1":
+          r += "";
+          break;
+        case "2":
+          r += "";
+          break;
+        case "3":
+          r += "";
+          break;
+        case "4":
+          r += "";
+          break;
+        case "5":
+          r += "";
+          break;
+        case "6":
+          r += "";
+          break;
+        case "7":
+          r += "";
+          break;
+        case "8":
+          r += "";
+          break;
+        case "9":
+          r += "";
+          break;
+        case " ":
+          r += " ";
+          break;
+      }
+    }
+
+    return r;
+  }
+  getData(){
     return this.dictionaryData;
   }
 
   isDataReady(){
-	  return this.loading == false;
+    return this.loading == false;
   }
 }
