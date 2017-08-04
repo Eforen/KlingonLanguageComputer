@@ -17,8 +17,8 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <button class="LangBtnKlingon" style="text-transform: none; width: 100%; margin-right: 1em;" *ngIf="!englishMode" ion-button start>tlhingon Hol</button>
-          <button class="LangBtnKlingon" style="text-transform: none; width: 100%; margin-right: 1em;" *ngIf="englishMode" ion-button outline start (click)="goToKlingon()">tlhingon Hol</button>
+          <button class="LangBtnKlingon" style="text-transform: none; width: 100%; margin-right: 1em;" *ngIf="!englishMode" ion-button start>tlhIngon Hol</button>
+          <button class="LangBtnKlingon" style="text-transform: none; width: 100%; margin-right: 1em;" *ngIf="englishMode" ion-button outline start (click)="goToKlingon()">tlhIngon Hol</button>
         </ion-col>
         <ion-col>
           <button class="LangBtnEnglish" style="text-transform: none; width: 100%; margin-left: 1em;" *ngIf="!englishMode" ion-button outline end (click)="goToEnglish()">English</button>
@@ -32,7 +32,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar [hidden]="searchHidden" (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar #search [hidden]="searchHidden" (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <ion-item-sliding *ngFor="let word of filterDictionary">
       <ion-item (click)="itemTapped($event, word)">
@@ -43,9 +43,10 @@
         <ion-icon name="arrow-forward" item-right light></ion-icon>
       </ion-item>
       <ion-item-options>
+        <!--
         <button ion-button icon-only (click)="editNote(word)" light>
           <ion-icon name="paper"></ion-icon>
-        </button>
+        </button>-->
         <button ion-button icon-only (click)="addToList(word)" danger>
           <ion-icon name="bookmark"></ion-icon>
         </button>

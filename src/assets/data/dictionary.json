@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 824,
   "sources":{
     "TKD":"The Klingon Dictionary",
     "TKDA":"The Klingon Dictionary Addendum",
@@ -10,151 +10,170 @@
     "KLIM3.16.15": "KLI mailing list 03/16/2015",
     "KLIM5.28.98": "KLI mailing list 05/28/1998"
   },
-  "transitivity":{
-    "state-quality-no_object":"This verb describes a state or quality and cannot take an object.",
-    "verb-direct_object": "This verb can take a direct object."
+  "tagsFull":{
+    "v":"Verb",
+    "vp":"Verb Prefix",
+    "vs":"Verb Suffix",
+    "n":"Noun",
+    "ns":"Noun Suffix",
+    "trans-sqno":"This verb describes a state or quality and cannot take an object.",
+    "trans-do": "This verb can take a direct object.",
+    "slang": "Warning this word is likely slang of some sort."
   },
-  "words":[
-    {
-      "id":0,
+  "words":[{
+      "word":"bach",
+      "tags":["v", "trans-do", "weap"],
+      "shortDef":"shoot",
+      "sources":["TKD","KGT"]
+    },{
+      "word":"bach",
+      "tags":["n", "weap"],
+      "shortDef":"shot",
+      "sources":["TKD"]
+    },{
+      "word":"bachHa'",
+      "tags":["v", "slang", "deriv"],
+      "shortDef":"err, make a mistake",
+      "synonyms":["[Qagh|v]"],
+      "subwords":["[bach|v]", "[-Ha'|v]"],
+      "sources":["KGT"]
+    },{
+      "word":"bachlu'meH chuq",
+      "tags":["n","deriv"],
+      "shortDef":"effective range",
+      "synonyms":["[Qapchu'meH chuq|n]"],
+      "subwords":["[bach|v]", "[-lu'|v]", "[-meH|v]", "[chuq|n]"],
+      "sources":["SkyBox 14"]
+    },{
+      "word":"bagh",
+      "tags":["v","trans-do"],
+      "shortDef":"tie",
+      "sources":["TKDA"]
+    },{
+      "word":"baghHa'",
+      "tags":["v","trans-do", "slang"],
+      "shortDef":"crack a code",
+      "see":["bagh|v]", "[-Ha'|v]"],
+      "sources":["{Saarbrücken qepHom'a' 2014}"]
+    },{
+      "word":"baghneQ",
+      "tags":["n", "food"],
+      "shortDef":"spoon",
+      "sources":["s.k 05/05/1998", "HQ 7.2 Jun. 1998", "TNK"]
+    },{
       "word":"mu-",
       "pIqaD": "",
-      "type":"Pronoun Verb Prefix",
+      "tags":["vp"],
       "shortDef":"He/she/it → me; they → me",
       "def":["He, she, or it does/doing/did a verb to me","They do/doing/did a verb to me"],
-      "antonms":[12],
-      "see":[13],
+      "antonyms":["[vI-|vp]"],
+      "see":["[nu-|vp]"],
       "sources":["TKD"]
-    },
-    {
-      "id":1,
+    },{
       "word":"mub",
       "pIqaD": "",
-      "type":"Verb",
+      "tags":["v", "trans-sqno"],
       "shortDef":"be legal",
       "def":["A state of being legal"],
-      "antonms":[14],
+      "antonyms":["[Hat|v]"],
       "see":[],
-      "sources":["TKD"],
-      "trans":"state-quality-no_object"
-    },
-    {
-      "id":2,
+      "sources":["TKD"]
+    },{
       "word":"much",
       "pIqaD": "",
-      "type":"Verb",
+      "tags":["v", "trans-do"],
       "shortDef":"Present, Preform (music)",
       "def":["Present as in a gift", "Preform music"],
-      "antonms":[],
-      "see":[3],
+      "antonyms":[],
+      "see":["[much|n]"],
       "sources":["TKD","KGT"],
-      "trans":"verb-direct_object",
       "notes":"This word was defined in [TKD] as \"present\". The definition \"perform (music)\" was added in [KGT]."
-    },
-    {
-      "id":3,
+    },{
       "word":"much",
       "pIqaD": "",
-      "type":"Noun",
+      "tags":["n"],
       "shortDef":"Presentation",
       "def":[],
-      "antonms":[],
-      "see":[2,4],
+      "antonyms":[],
+      "see":["[much|v]","[muchpa'|n]"],
       "sources":["TKD"]
-    },
-    {
-      "id":4,
+    },{
       "word":"muchpa'",
       "pIqaD": "",
-      "type":"Noun",
+      "tags":["n"],
       "shortDef":"Auditorium - the room in which a preformance takes place",
       "def":["The room in which a preformance takes place"],
-      "antonms":[],
-      "see":[5],
+      "antonyms":[],
+      "see":["[much gach|n]"],
       "sources":["KLIM3.16.15"]
-    },
-    {
-      "id":5,
+    },{
       "word":"much qach",
       "pIqaD": " ",
-      "type":"Noun",
+      "tags":["n"],
       "shortDef":"Theater - The whole building",
       "def":["The entire theater building, including the auditorium, lobby, dressing rooms, and so on."],
-      "antonms":[],
-      "see":[4],
+      "antonyms":[],
+      "see":["[muchpa'|n]"],
       "sources":["KLIM3.16.15"],
       "notes":"Maltz revealed this word to translate \"Bloomsbury Theater\" for the [Festival of Spoken Nerd DVD], but it ended up not being used on the DVD itself."
-    },
-    {
-      "id":6,
+    },{
       "word":"muchwI'",
       "pIqaD": "",
-      "type":"Noun",
+      "tags":["n"],
       "shortDef":"Musician - a being capable of language",
       "def":["a being capable of language who plays a musical instrument, especially as a profession, or is musically talented."],
-      "antonms":[],
+      "antonyms":[],
       "see":[],
       "sources":["KGT"],
       "usage":["It takes the plural suffix [#15]"]
-    },
-    {
-      "id":12,
+    },{
       "word":"vI-",
       "pIqaD": "",
-      "type":"Pronoun Verb Prefix",
+      "tags":["vp"],
       "shortDef":"I → him/her/it; I → them",
       "def":["I do/doing/did a verb to he, she, or it","I do/doing/did a verb to them"],
-      "antonms":[0],
+      "antonyms":["[mu-|vp]"],
       "see":[],
       "sources":["TKD"]
-    },
-    {
-      "id":13,
+    },{
       "word":"nu-",
       "pIqaD": "",
-      "type":"Pronoun Verb Prefix",
+      "tags":["vp"],
       "shortDef":"He/she/it → us; they → us",
       "def":["He, she, or it does/doing/did a verb to us","They do/doing/did a verb to us"],
-      "antonms":[12],
-      "see":[0],
+      "antonyms":["[vI-|vp]"],
+      "see":["[mu-|vp]"],
       "sources":["TKD"]
-    },
-    {
-      "id":14,
+    },{
       "word":"Hat",
       "pIqaD": "",
-      "type":"Verb",
+      "tags":["v", "trans-sqno"],
       "shortDef":"be illegal",
       "def":["A state of not being legal"],
-      "antonms":[1],
+      "antonyms":["[mub|v]"],
       "see":[],
       "sources":["TKD"],
-      "trans":"state-quality-no_object",
       "notes":"In slang, stolen goods are said to be \"hot\"."
-    },
-    {
-      "id":15,
+    },{
       "word":"-pu'",
       "pIqaD": "",
-      "type":"Noun Suffix",
+      "tags":["ns"],
       "shortDef":"plural (beings capable of using language)(noun type 2)",
       "suffixType": 2,
       "def":["This suffix when attached to nouns capable of language indicates there is more then one."],
-      "antonms":[12],
-      "see":[0],
+      "antonyms":["[vI-|vp]"],
+      "see":["[mu-|vp]"],
       "sources":["TKD 3.3.2", "KLIM5.28.98"],
       "notes": "This is used not only for nouns that are currently capable of language but who will later. For example when refuring to Klingon babies we still use [-pu'] even though they are not currently capable of speaking. For example [tlhInganpu'] can mean baby or adult Klingons."
-    },
-    {
-      "id":16,
+    },{
       "word":"-mey",
       "pIqaD": "",
-      "type":"Noun Suffix",
+      "tags":["ns"],
       "shortDef":"plural (general)(noun type 2)",
       "suffixType": 2,
       "def":["beings capable of language scattered all about", "more then one being not capable of language", "(sometimes by poets) plural body parts no longer attached to the body"],
-      "antonms":[12],
-      "see":[0],
+      "antonyms":["[vI-|vp]"],
+      "see":"[mu-|vp]",
       "sources":["TKD"],
       "notes":["This suffix cannot be used for body parts (see [-Du'] (n)), but this rule is sometimes violated by poets.", "Some nouns are inherently plural in meaning, with singular forms which are utterly distinct. These inherently plural nouns are treated as grammatically singular, in that singular pronouns and verb prefixes are used for them. When the suffix [-mey] (n) is applied to the singular forms of these nouns, the resulting plural word carries the connotation of \"scattered all about\"."],
       "examples":[
@@ -163,12 +182,10 @@
         {"phrase":"jatmey", "text": "scattered tongues"},
         {"phrase":"DoSmey", "text": "targets scattered all about"}
       ]
-    },
-    {
-      "id":17,
+    },{
       "word":"-Du'",
       "pIqaD": "",
-      "type":"Noun Suffix",
+      "tags":["ns"],
       "shortDef":"plural (body parts)(noun type 2)",
       "suffixType": 2,
       "def":[
@@ -176,9 +193,9 @@
         "plural body parts of being capable of language (still attached)",
         "plural body parts of any animal (still attached)"
       ],
-      "antonms":[],
-      "see":[16],
-      "sources":["TKD"],
+      "antonyms":[],
+      "see":["[-mey|ns]"],
+      "sources":["TKD"]
     }
   ]
 }

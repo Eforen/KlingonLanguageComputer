@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams,  ToastController  } from 'ionic-angular';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { NavController, NavParams,  ToastController, Searchbar } from 'ionic-angular';
+
 import { WordDetailsPage } from '../word-details/word-details';
 
 import { DictionaryService } from '../../services/dictionary.service';
@@ -20,14 +21,14 @@ export class DictionaryPage {
   currentSearch: string;
   englishMode: boolean;
 
+  @ViewChild('search') searchElement : Searchbar;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private dictionaryService: DictionaryService,
     private sentenceService: SentenceService,
     private toast: ToastController) {
-    // If we navigated to this page, we will have an item available as a nav param
-    //this.selectedItem = navParams.get('item');
 
 
     /*
@@ -47,6 +48,10 @@ export class DictionaryPage {
 
     this.searchHidden = true;
     this.fuseSetup = false;
+
+    if(this.navParams.get('search')){
+      this.searchHidden = false;
+    }
   }
 
   goToEnglish(){
@@ -61,6 +66,14 @@ export class DictionaryPage {
     this.dictionary = this.dictionaryService.getData();
     this.filterDictionary = this.dictionary.words;
   }
+
+  ngAfterViewInit() {
+    // If we navigated to this page, we may have an item available as a nav param
+    if(this.navParams.get('search')){
+      this.searchElement.setFocus();
+    }
+  }
+
   toggleSearchBar(){
     this.searchHidden = !this.searchHidden;
     if(this.searchHidden) this.filterDictionary = this.dictionary.words; //reset the dictionary to all words
