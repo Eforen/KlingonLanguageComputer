@@ -11,8 +11,8 @@
     </ion-buttons>
   </ion-navbar>
   <ion-toolbar>
-    <button class="LangBtnKlingon"  *ngIf="!englishMode" ion-button start>tlhingon Hol</button> <button class="LangBtnEnglish" *ngIf="!englishMode" ion-button outline end (click)="goToEnglish()">English</button>
-    <button class="LangBtnKlingon" *ngIf="englishMode" ion-button outline start (click)="goToKlingon()">tlhingon Hol</button> <button class="LangBtnEnglish" *ngIf="englishMode" ion-button end>English</button>
+    <button class="LangBtnKlingon" style="text-transform: none;" *ngIf="!englishMode" ion-button start>tlhingon Hol</button> <button class="LangBtnEnglish" style="text-transform: none;" *ngIf="!englishMode" ion-button outline end (click)="goToEnglish()">English</button>
+    <button class="LangBtnKlingon" style="text-transform: none;" *ngIf="englishMode" ion-button outline start (click)="goToKlingon()">tlhingon Hol</button> <button class="LangBtnEnglish" style="text-transform: none;" *ngIf="englishMode" ion-button end>English</button>
   </ion-toolbar>
 </ion-header>
 

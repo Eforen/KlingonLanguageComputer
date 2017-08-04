@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { DictionaryPage } from '../pages/dictionary/dictionary';
 import { PrefixSelectorPage } from '../pages/prefix-selector/prefix-selector';
+import { SentenceToolPage } from '../pages/sentence-tool/sentence-tool';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +25,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Dictionary', component: DictionaryPage },
-      { title: 'Prefix Selector', component: PrefixSelectorPage }
+      { title: 'Prefix Selector', component: PrefixSelectorPage },
+      { title: 'Sentence Tool', component: SentenceToolPage }
     ];
 
   }

@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { WordDetailsPage } from '../word-details/word-details';
 
 import { DictionaryService } from '../../services/dictionary.service';
+import { SentenceService } from '../../services/sentence.service';
 //import * as Fuse from '../../libs/fuse.js';
 import * as Fuzzaldrin from 'fuzzaldrin';
 //
@@ -19,7 +20,7 @@ export class DictionaryPage {
   currentSearch: string;
   englishMode: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dictionaryService: DictionaryService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dictionaryService: DictionaryService, private sentenceService: SentenceService) {
     // If we navigated to this page, we will have an item available as a nav param
     //this.selectedItem = navParams.get('item');
 
@@ -100,6 +101,10 @@ export class DictionaryPage {
     }
   }
   */
+
+  addToList(word){
+    this.sentenceService.addWord(word);
+  }
 
   runSearchFilter(){
     if(this.englishMode) this.filterDictionary = Fuzzaldrin.filter(this.dictionary.words, this.currentSearch, {key: 'shortDef'});

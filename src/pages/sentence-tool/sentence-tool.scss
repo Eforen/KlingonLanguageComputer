@@ -1,0 +1,16 @@
+page-sentence-tool {
+  .sentence{
+    padding: 5px;
+    min-height: 80%;
+  }
+  .sentence-word{
+    display: inline-block;
+    border-style: solid;
+    border-color: #488aff;
+    color: #488aff;
+    border-width: 1px;
+    border-radius: 0.2em;
+    padding: 5px;
+    margin: 2px;
+  }
+}
