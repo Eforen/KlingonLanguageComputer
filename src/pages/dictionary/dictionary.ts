@@ -118,12 +118,21 @@ export class DictionaryPage {
       if (this.fetchedValue || this.errorValue != null) {
         console.log("Loaded");
         this.loader.dismiss();
+
+        //Display Error if available
         if(this.errorValue != null) this.toast.create({
           message: this.errorValue.toString(),
           position: "bottom",
           showCloseButton: true,
           closeButtonText: "OK"
-        })
+        });
+
+        //Focus Search if that was clicked to get here.
+        if(this.navParams.get('search')){
+          this.searchActive = true;
+
+          setTimeout(this.searchElement.setFocus.bind(this.searchElement), 5);
+        }
       }
     } else{
       //Not Showing Loader
@@ -153,9 +162,12 @@ export class DictionaryPage {
   }
 
   ionViewDidEnter(){
-    if(this.navParams.get('search')){
-      this.searchActive = true;
-      this.searchElement.setFocus();
+    if(this.fetchingValue == false){
+      if(this.navParams.get('search')){
+        this.searchActive = true;
+
+        setTimeout(this.searchElement.setFocus.bind(this.searchElement), 5);
+      }
     }
   }
 
