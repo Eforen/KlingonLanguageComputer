@@ -21,16 +21,19 @@
     "slang": "Warning this word is likely slang of some sort."
   },
   "words":[{
+      "v":1,
       "word":"bach",
       "tags":["v", "trans-do", "weap"],
       "shortDef":"shoot",
       "sources":["TKD","KGT"]
     },{
+      "v":1,
       "word":"bach",
       "tags":["n", "weap"],
       "shortDef":"shot",
       "sources":["TKD"]
     },{
+      "v":1,
       "word":"bachHa'",
       "tags":["v", "slang", "deriv"],
       "shortDef":"err, make a mistake",
@@ -38,6 +41,7 @@
       "subwords":["[bach|v]", "[-Ha'|v]"],
       "sources":["KGT"]
     },{
+      "v":1,
       "word":"bachlu'meH chuq",
       "tags":["n","deriv"],
       "shortDef":"effective range",
@@ -45,22 +49,26 @@
       "subwords":["[bach|v]", "[-lu'|v]", "[-meH|v]", "[chuq|n]"],
       "sources":["SkyBox 14"]
     },{
+      "v":1,
       "word":"bagh",
       "tags":["v","trans-do"],
       "shortDef":"tie",
       "sources":["TKDA"]
     },{
+      "v":1,
       "word":"baghHa'",
       "tags":["v","trans-do", "slang"],
       "shortDef":"crack a code",
       "see":["bagh|v]", "[-Ha'|v]"],
       "sources":["{Saarbrücken qepHom'a' 2014}"]
     },{
+      "v":1,
       "word":"baghneQ",
       "tags":["n", "food"],
       "shortDef":"spoon",
       "sources":["s.k 05/05/1998", "HQ 7.2 Jun. 1998", "TNK"]
     },{
+      "v":1,
       "word":"mu-",
       "pIqaD": "",
       "tags":["vp"],
@@ -70,6 +78,7 @@
       "see":["[nu-|vp]"],
       "sources":["TKD"]
     },{
+      "v":1,
       "word":"mub",
       "pIqaD": "",
       "tags":["v", "trans-sqno"],
@@ -79,6 +88,7 @@
       "see":[],
       "sources":["TKD"]
     },{
+      "v":1,
       "word":"much",
       "pIqaD": "",
       "tags":["v", "trans-do"],
@@ -89,6 +99,7 @@
       "sources":["TKD","KGT"],
       "notes":"This word was defined in [TKD] as \"present\". The definition \"perform (music)\" was added in [KGT]."
     },{
+      "v":1,
       "word":"much",
       "pIqaD": "",
       "tags":["n"],
@@ -98,6 +109,7 @@
       "see":["[much|v]","[muchpa'|n]"],
       "sources":["TKD"]
     },{
+      "v":1,
       "word":"muchpa'",
       "pIqaD": "",
       "tags":["n"],
@@ -107,6 +119,7 @@
       "see":["[much gach|n]"],
       "sources":["KLIM3.16.15"]
     },{
+      "v":1,
       "word":"much qach",
       "pIqaD": " ",
       "tags":["n"],
@@ -117,6 +130,7 @@
       "sources":["KLIM3.16.15"],
       "notes":"Maltz revealed this word to translate \"Bloomsbury Theater\" for the [Festival of Spoken Nerd DVD], but it ended up not being used on the DVD itself."
     },{
+      "v":1,
       "word":"muchwI'",
       "pIqaD": "",
       "tags":["n"],
@@ -127,6 +141,7 @@
       "sources":["KGT"],
       "usage":["It takes the plural suffix [#15]"]
     },{
+      "v":1,
       "word":"vI-",
       "pIqaD": "",
       "tags":["vp"],
@@ -136,6 +151,7 @@
       "see":[],
       "sources":["TKD"]
     },{
+      "v":1,
       "word":"nu-",
       "pIqaD": "",
       "tags":["vp"],
@@ -145,6 +161,7 @@
       "see":["[mu-|vp]"],
       "sources":["TKD"]
     },{
+      "v":1,
       "word":"Hat",
       "pIqaD": "",
       "tags":["v", "trans-sqno"],
@@ -155,6 +172,7 @@
       "sources":["TKD"],
       "notes":"In slang, stolen goods are said to be \"hot\"."
     },{
+      "v":1,
       "word":"-pu'",
       "pIqaD": "",
       "tags":["ns"],
@@ -166,6 +184,7 @@
       "sources":["TKD 3.3.2", "KLIM5.28.98"],
       "notes": "This is used not only for nouns that are currently capable of language but who will later. For example when refuring to Klingon babies we still use [-pu'] even though they are not currently capable of speaking. For example [tlhInganpu'] can mean baby or adult Klingons."
     },{
+      "v":1,
       "word":"-mey",
       "pIqaD": "",
       "tags":["ns"],
@@ -183,6 +202,7 @@
         {"phrase":"DoSmey", "text": "targets scattered all about"}
       ]
     },{
+      "v":1,
       "word":"-Du'",
       "pIqaD": "",
       "tags":["ns"],

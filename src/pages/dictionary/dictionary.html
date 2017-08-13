@@ -29,10 +29,10 @@
     <!-- <button class="LangBtnKlingon" style="text-transform: none;" *ngIf="!englishMode" ion-button start>tlhingon Hol</button> <button class="LangBtnEnglish" style="text-transform: none;" *ngIf="!englishMode" ion-button outline end (click)="goToEnglish()">English</button>
     <button class="LangBtnKlingon" style="text-transform: none;" *ngIf="englishMode" ion-button outline start (click)="goToKlingon()">tlhingon Hol</button> <button class="LangBtnEnglish" style="text-transform: none;" *ngIf="englishMode" ion-button end>English</button>-->
   </ion-toolbar>
+  <ion-searchbar #search (ionInput)="searchInputChanged($event)" (ionCancel)="searchCanceled($event)"></ion-searchbar>
 </ion-header>
-
 <ion-content>
-  <ion-searchbar #search [hidden]="searchHidden" (ionInput)="getItems($event)"></ion-searchbar>
+
   <ion-list>
     <ion-item-sliding *ngFor="let word of filterDictionary">
       <ion-item (click)="itemTapped($event, word)">
@@ -54,7 +54,7 @@
     </ion-item-sliding>
   </ion-list>
   <!--s
-  <ion-list *ngIf="searchHidden == false">
+  <ion-list *ngIf="searchActive == false">
     <ion-item-sliding *ngFor="let word of filterDictionary">
       <ion-item (click)="itemTapped($event, word.item)">
         {{word.item.word}}

@@ -1,12 +1,24 @@
 
 import { Http } from '@angular/http';
+import {NgRedux, select} from "ng2-redux";
+import {IAppState} from "../app/store";
+import {actions} from "../app/data/reducers";
+import {Injectable} from "@angular/core";
+import {Observable} from "rxjs/Observable";
+import {timeout} from "rxjs/operator/timeout";
 
+@Injectable()
 export class DictionaryService{
   private dictionaryData: any;
-  private loading : boolean;
+  private setup: boolean;
 
+  @select(['dictionary'])
+  dictionaryWatcher: Observable<boolean>;
 
-  constructor() {
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private http: Http
+  ) {
     /*
     this.loading = true;
     http.get('/assets/data/dictionary.json').(function(response){
@@ -16,7 +28,13 @@ export class DictionaryService{
     */
 
     //Temporary Hardcoding to work on app without needing to worry about the local storage of the database yet.
-    this.dictionaryData = {
+    //this.dictionaryData = ;
+    this.dictionaryWatcher.subscribe((state)=>{
+      console.log(state);
+    })
+    console.log(ngRedux.getState())
+
+    setTimeout(this.ngRedux.dispatch.bind(this, {type:actions.dictionary.loadSuccessful, payload: {
       "version": 1,
       "sources":{
         "TKD":"The Klingon Dictionary",
@@ -199,18 +217,14 @@ export class DictionaryService{
           "sources":["TKD"],
         }
       ]
-    };
-
-    this.setuppIqaD();
+    }}), 1000);
   }
 
-  setuppIqaD(){
-    /*
-    for(var i = 0; i < this.dictionaryData.words.count; i++){
-      //this.dictionaryData.words[i].pIqaD = this.dictionaryData.words[i].word;
-      this.dictionaryData.words[i].pIqaD = "WTF!";
+  loadWords(){
+    if(!this.setup) {
+      this.setup = true;
+      this.ngRedux.dispatch({type: actions.dictionary.load});
     }
-    */
   }
 
   // WARNING: This only works with properly formed tlhIngon words. It makes a lot of assumptions
@@ -337,11 +351,16 @@ export class DictionaryService{
 
     return r;
   }
+
+  getWord(id : number){
+
+  }
+
   getData(){
-    return this.dictionaryData;
+    return this.ngRedux.getState().dictionary;
   }
 
   isDataReady(){
-    return this.loading == false;
+    return this.ngRedux.getState().dictionary.fetched;
   }
 }

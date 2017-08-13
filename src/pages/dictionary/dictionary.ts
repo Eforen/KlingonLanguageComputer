@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { NavController, NavParams,  ToastController, Searchbar } from 'ionic-angular';
+import {NavController, NavParams, ToastController, Searchbar, LoadingController } from 'ionic-angular';
 
 import { WordDetailsPage } from '../word-details/word-details';
 
@@ -7,6 +7,18 @@ import { DictionaryService } from '../../services/dictionary.service';
 import { SentenceService } from '../../services/sentence.service';
 //import * as Fuse from '../../libs/fuse.js';
 import * as Fuzzaldrin from 'fuzzaldrin';
+
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/operator/map';
+import {AppStore} from '../../app/data/models/appstore.model';
+import {Word} from '../../app/data/models/word.model';
+import {WordsService} from '../../app/data/services/words.service';
+import {Store} from '@ngrx/store';
+
+import {NgRedux, select} from 'ng2-redux'
+import {IAppState} from '../../app/store'
+import {actions} from '../../app/data/reducers'
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 //
 
 @Component({
@@ -15,20 +27,42 @@ import * as Fuzzaldrin from 'fuzzaldrin';
 })
 export class DictionaryPage {
   selectedItem: any;
-  dictionary: any;
+  dictionary: Word[];
   loading: boolean;
-  searchHidden: boolean;
+  searchActive: boolean;
   currentSearch: string;
   englishMode: boolean;
+  lissener: any;
 
   @ViewChild('search') searchElement : Searchbar;
+
+  @select(['dictionary', 'words'])
+  words: Observable<Word[]>;
+
+  @select(['dictionary', 'fetched'])
+  fetched: Observable<boolean>;
+  @select(['dictionary', 'fetching'])
+  fetching: Observable<boolean>;
+  @select(['dictionary', 'error'])
+  error: Observable<any>;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private dictionaryService: DictionaryService,
     private sentenceService: SentenceService,
-    private toast: ToastController) {
+    private toast: ToastController,
+    //private wordsService: WordsService,
+    //private store: Store<AppStore>
+    private ngRedux: NgRedux<IAppState>,
+    public loadingCtrl: LoadingController,
+  ) {
+
+    //this.words = wordsService.words;
+    //this.words.subscribe((words)=>{ this.dictionary = words });
+
+    //this.dictionary = wordsService.words;
+
 
 
     /*
@@ -46,12 +80,63 @@ export class DictionaryPage {
     }
     */
 
-    this.searchHidden = true;
+    this.searchActive = false;
     this.fuseSetup = false;
 
-    if(this.navParams.get('search')){
-      this.searchHidden = false;
+    //NgRedux.instance.connect()
+    //this.lissener = this.ngRedux.subscribe(this.storeChanged);
+    //this.lissener = this.ngRedux.connect(this.storeChanged);
+    this.fetching.subscribe((value)=>{
+      this.fetchingValue = value;
+      this.updateLoading();
+    });
+    this.fetched.subscribe((value)=>{
+      this.fetchedValue = value;
+      this.updateLoading();
+    });
+    this.error.subscribe((value)=>{
+      this.errorValue = value;
+      this.updateLoading();
+    });
+
+    this.words.subscribe((words)=> {
+      this.dictionary = words;
+      this.updateSearch();
+    });
+    this.loadWords();
+  }
+
+  private fetchedValue : Boolean;
+  private fetchingValue : Boolean;
+  private errorValue : any;
+
+  private loader: any;
+  updateLoading(){
+    //console.log("Checking");
+    if(this.loader != null){
+      //Showing Loader
+      if (this.fetchedValue || this.errorValue != null) {
+        console.log("Loaded");
+        this.loader.dismiss();
+        if(this.errorValue != null) this.toast.create({
+          message: this.errorValue.toString(),
+          position: "bottom",
+          showCloseButton: true,
+          closeButtonText: "OK"
+        })
+      }
+    } else{
+      //Not Showing Loader
+      if(this.fetchingValue){
+        console.log("Loading");
+        this.loader = this.loadingCtrl.create({content: "Loading Words..."});
+        this.loader.present();
+      }
     }
+  }
+
+  loadWords(){
+    this.dictionaryService.loadWords();
   }
 
   goToEnglish(){
@@ -63,8 +148,15 @@ export class DictionaryPage {
   }
 
   ngOnInit() {
-    this.dictionary = this.dictionaryService.getData();
-    this.filterDictionary = this.dictionary.words;
+    //this.dictionary = this.dictionaryService.getData();
+    this.filterDictionary = this.dictionary;
+  }
+
+  ionViewDidEnter(){
+    if(this.navParams.get('search')){
+      this.searchActive = true;
+      this.searchElement.setFocus();
+    }
   }
 
   ngAfterViewInit() {
@@ -74,10 +166,22 @@ export class DictionaryPage {
     }
   }
 
+  ngOnDestroy(){
+    //this.lissener();
+  }
+
+  storeChanged(state){
+    console.log(state);
+  }
+
   toggleSearchBar(){
-    this.searchHidden = !this.searchHidden;
-    if(this.searchHidden) this.filterDictionary = this.dictionary.words; //reset the dictionary to all words
-    else this.runSearchFilter(); //rerun the filter if the search is opened back up
+    this.searchActive = !this.searchActive;
+    this.updateSearch();
+  }
+
+  updateSearch(){
+    if(this.searchActive) this.runSearchFilter(); //rerun the filter if the search is opened back up
+    else this.filterDictionary = this.dictionary; //reset the dictionary to all words
   }
 
   itemTapped(event, word) {
@@ -138,51 +242,16 @@ export class DictionaryPage {
   }
 
   runSearchFilter(){
-    if(this.englishMode) this.filterDictionary = Fuzzaldrin.filter(this.dictionary.words, this.currentSearch, {key: 'shortDef'});
-    else this.filterDictionary = Fuzzaldrin.filter(this.dictionary.words, this.currentSearch, {key: 'word'});
+    if(this.englishMode) this.filterDictionary = Fuzzaldrin.filter(this.dictionary, this.currentSearch, {key: 'shortDef'});
+    else this.filterDictionary = Fuzzaldrin.filter(this.dictionary, this.currentSearch, {key: 'word'});
   }
 
-  getItems(ev: any) {
+  searchInputChanged(ev: any) {
     this.currentSearch = ev.target.value.trim();
     this.runSearchFilter();
+  }
 
+  searchCanceled(ev: any){
 
-    //this.setupFuse();
-    //this.filterDictionary = this.fuse.search(ev.target.value.trim());
-    //console.log(this.filterDictionary);
-
-    //console.log(this.dictionaryData.words);
-    //console.log(this.dictionary.words);
-
-    /*
-    // With an array of strings
-    var candidates = ['Call', 'Me', 'Maybe'];
-    var results = Fuzzaldrin.filter(candidates, 'me');
-    console.log(results) //# ['Me', 'Maybe']
-
-    // With an array of objects
-    var candidates2 = [
-      {name: 'Call', id: 1},
-      {name: 'Me', id: 2},
-      {name: 'Maybe', id: 3}
-    ]
-    results = Fuzzaldrin.filter(candidates2, 'me', {key: 'name'});
-    console.log(results) //# [{name: 'Me', id: 2}, {name: 'Maybe', id: 3}]
-    */
-
-    /*
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the searchbar
-    let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-    */
   }
 }
