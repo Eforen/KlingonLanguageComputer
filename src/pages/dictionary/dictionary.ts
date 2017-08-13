@@ -131,7 +131,7 @@ export class DictionaryPage {
         if(this.navParams.get('search')){
           this.searchActive = true;
 
-          setTimeout(this.searchElement.setFocus.bind(this.searchElement), 5);
+          setTimeout(this.searchElement.setFocus.bind(this.searchElement), 200);
         }
       }
     } else{
@@ -166,7 +166,7 @@ export class DictionaryPage {
       if(this.navParams.get('search')){
         this.searchActive = true;
 
-        setTimeout(this.searchElement.setFocus.bind(this.searchElement), 5);
+        setTimeout(this.searchElement.setFocus.bind(this.searchElement), 200);
       }
     }
   }

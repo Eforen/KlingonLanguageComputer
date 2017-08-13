@@ -489,7 +489,7 @@ var DictionaryPage = (function () {
                 //Focus Search if that was clicked to get here.
                 if (this.navParams.get('search')) {
                     this.searchActive = true;
-                    setTimeout(this.searchElement.setFocus.bind(this.searchElement), 5);
+                    setTimeout(this.searchElement.setFocus.bind(this.searchElement), 200);
                 }
             }
         }
@@ -519,7 +519,7 @@ var DictionaryPage = (function () {
         if (this.fetchingValue == false) {
             if (this.navParams.get('search')) {
                 this.searchActive = true;
-                setTimeout(this.searchElement.setFocus.bind(this.searchElement), 5);
+                setTimeout(this.searchElement.setFocus.bind(this.searchElement), 200);
             }
         }
     };
